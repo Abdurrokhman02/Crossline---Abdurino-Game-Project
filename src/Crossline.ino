@@ -17,9 +17,8 @@
 volatile int gameStatus = gameStart;
 
 // Variabel game
-int MyScore = 0;
 int playerMove = 0;             // Posisi player naik/turun
-int speed = 5; //kecepatan rintangan
+int speed = 4; //kecepatan rintangan
 int obstacles [2] = {0, 1}; //jenis rintangan
 int obstaclex [2] = {128, 200}; //posisi rintangan
 volatile int jumping = 0;       // Status lompat
@@ -93,7 +92,7 @@ void movePlayer(){
       playerMove += 5;         // naik
       if (playerMove > 25) jumping = 2;
     } else {
-      playerMove -= 5;         // turun
+      playerMove -= 3;         // turun
       if (playerMove <= 0){
         jumping = 0;
         playerMove = 0;
@@ -182,7 +181,7 @@ void checkCollision () {
     case 1: obw = 17; obh = 16; break; // Ukuran motor
   }
 
-  // Logika pengecekan tetap sama
+  // Logika pengecekan
   if (obx > 15 || obx + obw < 5 || playerMove > obh - 3) {
     // Aman
   } else {
